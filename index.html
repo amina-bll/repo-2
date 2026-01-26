@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
@@ -125,8 +124,8 @@
   }
 }
 </script>
-  <link rel="stylesheet" href="/index.css">
-</head>
+    <link rel="stylesheet" href="/index.css">
+  </head>
   <body>
     <div class="star-field" id="starField"></div>
     <div id="root"></div>
@@ -144,6 +143,24 @@
         field.appendChild(star);
       }
     </script>
-  <script type="module" src="/index.tsx"></script>
-</body>
+    
+    <!-- Chatwoot Script -->
+    <script>
+      (function(d,t) {
+        var BASE_URL="https://chatwoot.panel.myserver-n8n.site";
+        var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=BASE_URL+"/packs/js/sdk.js";
+        g.async = true;
+        s.parentNode.insertBefore(g,s);
+        g.onload=function(){
+          window.chatwootSDK.run({
+            websiteToken: 'WA2ymc7v3vcUSnXzyqVywJpK',
+            baseUrl: BASE_URL
+          })
+        }
+      })(document,"script");
+    </script>
+    
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
