@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>أركان ديجيتال | أتمتة الأعمال وتطوير الحلول الرقمية</title>
+    <title>منارة تك | Manara Tech - أتمتة المستقبل</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
               sans: ['Readex Pro', 'sans-serif'],
             },
             colors: {
-              space: {
-                950: '#02040a',
-                900: '#0a1128',
+              brand: {
+                cyan: '#06b6d4',
+                blue: '#3b82f6',
+                deep: '#0f172a',
+                slate: '#f8fafc',
               },
             },
           },
@@ -28,123 +31,61 @@
     <style>
       body {
         font-family: 'Readex Pro', sans-serif;
-        background-color: #02040a;
-        color: #f8fafc;
+        transition: background-color 0.5s ease, color 0.5s ease;
+        line-height: 1.6;
         scroll-behavior: smooth;
-        overflow-x: hidden;
       }
-      
       .glass {
-        background: rgba(255, 255, 255, 0.02);
-        backdrop-filter: blur(24px);
-        -webkit-backdrop-filter: blur(24px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
       }
-
-      .text-gradient {
-        background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+      .light .glass {
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(59, 130, 246, 0.1);
       }
-
-      .star-field {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: radial-gradient(circle at 50% 50%, #0a1128 0%, #02040a 100%);
+      .dark .glass {
+        background: rgba(15, 23, 42, 0.8);
+        border: 1px solid rgba(6, 182, 212, 0.2);
       }
-
-      .star {
-        position: absolute;
-        background: white;
-        border-radius: 50%;
-        opacity: 0.5;
-        animation: twinkle var(--duration) infinite ease-in-out;
+      .text-glow-cyan {
+        text-shadow: 0 0 15px rgba(53, 95, 102, 0.4);
       }
-
-      @keyframes twinkle {
-        0%, 100% { opacity: 0.2; transform: scale(0.8); }
-        50% { opacity: 0.7; transform: scale(1.1); }
+      .hero-mesh {
+        background-image: 
+          radial-gradient(at 0% 0%, hsla(199,100%,93%,1) 0, transparent 50%), 
+          radial-gradient(at 50% 0%, hsla(217,100%,93%,1) 0, transparent 50%), 
+          radial-gradient(at 100% 0%, hsla(187,100%,93%,1) 0, transparent 50%);
       }
-
-      .hero-sphere {
-        position: absolute;
-        top: 35%;
-        left: 50%;
-        transform: translate(-50%, 0);
-        width: 140vw;
-        height: 140vw;
-        max-width: 1400px;
-        max-height: 1400px;
-        background: radial-gradient(circle at center, rgba(59, 130, 246, 0.12) 0%, rgba(59, 130, 246, 0.04) 40%, transparent 75%);
-        border-radius: 50%;
-        z-index: 0;
-        pointer-events: none;
-        filter: blur(60px);
+      .dark .hero-mesh {
+        background-image: 
+          radial-gradient(at 0% 0%, hsla(222,47%,11%,1) 0, transparent 50%), 
+          radial-gradient(at 50% 0%, hsla(217,100%,5%,1) 0, transparent 50%);
       }
-
-      .hero-arc {
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 160vw;
-        height: 120vw;
-        border-radius: 50%;
-        background: linear-gradient(to top, transparent, rgba(255, 255, 255, 0.03));
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        z-index: 1;
-        pointer-events: none;
+      [dir="ltr"] .rtl-flip {
+        transform: scaleX(-1);
       }
-
-      ::-webkit-scrollbar {
-        width: 6px;
+      .card-premium {
+        background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(248,250,252,1) 100%);
+        box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
       }
-      ::-webkit-scrollbar-track {
-        background: #02040a;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #1e293b;
-        border-radius: 10px;
+      .dark .card-premium {
+        background: linear-gradient(135deg, rgba(30,41,59,1) 0%, rgba(15,23,42,1) 100%);
       }
     </style>
-    <script type="importmap">
+  <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "lucide-react": "https://esm.sh/lucide-react@0.463.0?deps=react@19.0.0",
-    "framer-motion": "https://esm.sh/framer-motion@11.11.11?deps=react@19.0.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "framer-motion": "https://esm.sh/framer-motion@^12.29.2",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
   }
 }
 </script>
-    <link rel="stylesheet" href="/index.css">
-  </head>
-  <body>
-    <div class="star-field" id="starField"></div>
+</head>
+  <body class="bg-brand-slate text-slate-900 dark:bg-brand-deep dark:text-white">
     <div id="root"></div>
-    <script>
-      const field = document.getElementById('starField');
-      for (let i = 0; i < 200; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        const size = Math.random() * 2.5;
-        star.style.width = `${size}px`;
-        star.style.height = `${size}px`;
-        star.style.top = `${Math.random() * 100}%`;
-        star.style.left = `${Math.random() * 100}%`;
-        star.style.setProperty('--duration', `${3 + Math.random() * 5}s`);
-        field.appendChild(star);
-      }
-    </script>
-    
-    <!-- Chatwoot Script -->
     <script>
       (function(d,t) {
         var BASE_URL="https://chatwoot.panel.myserver-n8n.site";
@@ -160,7 +101,5 @@
         }
       })(document,"script");
     </script>
-    
-    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
